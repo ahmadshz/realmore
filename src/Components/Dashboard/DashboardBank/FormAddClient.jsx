@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import polygon from '../../../assets/IconDashboard/polygon.png';
+import polygon from '../../../assets/IconDashboard/Polygon.png';
 import axios from 'axios';
 import { baseUrl } from '../../../Api/Api';
 import Cookies from 'universal-cookie';
