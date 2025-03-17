@@ -5,7 +5,7 @@ import HeaderSection from '../../../Components/Auth/HeaderSection';
 import RightSection from '../../../Components/Auth/RightSection';
 import CheckBox from '../../../Components/Auth/CheckBox';
 import Button from '../../../Components/Auth/Button';
-import Header from '../../../Components/Auth/header';
+import Header from '../../../Components/Auth/Header';
 import axios from 'axios';
 import { baseUrl } from '../../../Api/Api';
 
