@@ -10,7 +10,7 @@ import axios from 'axios';
 import { baseUrl } from '../../../Api/Api';
 import LoginMobileBank from './LoginMobileBank';
 import Cookies from 'universal-cookie';
-import Header from '../../../Components/Auth/header';
+import Header from '../../../Components/Auth/Header';
 
 const Login = () => {
   const firstTitle = "Hello, Welcome Bank Employee";
