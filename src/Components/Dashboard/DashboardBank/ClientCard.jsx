@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import moreinfo from '../../../assets/IconDashboard/moreinfo.png'
+import moreinfo from '../../../assets/IconDashboard/moreInfo.png'
 import circle from '../../../assets/IconDashboard/circle.png'
 import diagram from '../../../assets/IconDashboard/diagram.png'
 import location from '../../../assets/IconDashboard/location.png'
