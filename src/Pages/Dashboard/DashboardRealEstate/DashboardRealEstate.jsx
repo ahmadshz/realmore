@@ -3,7 +3,7 @@ import SideBar from '../../../Components/Dashboard/DashboardBank/SideBar';
 import EndSection from '../../../Components/Dashboard/DashboardBank/EndSection';
 import { Outlet } from 'react-router-dom';
 import logo from '../../../assets/iconRealEstate/LogoHeader.png';
-import notification from '../../../assets/iconRealEstate/Notification.png';
+import notification from '../../../assets/iconRealEstate/notification.png';
 import client from '../../../assets/iconRealEstate/iconClient.png';
 import overview from '../../../assets/iconRealEstate/overview.png';
 
