@@ -1,12 +1,12 @@
 import React from 'react'
-import logo from '../../assets/LogoGreen/logoheader.png'
 import { FiSearch } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-const Header = ({ color }) => {
+const Header = ({ color , logoHeader }) => {
     return (
-        <div className='hidden lg:flex justify-between fixed z-10 bg-white items-center w-full h-[80px] lg:px-[100px]  xl:px-[160px] border border-[#D3D3D3]-b '>
-            <img className='lg:w-[140px] 2xl:w-[180px]' src={logo} alt='' />
+        <div className='hidden lg:flex justify-between fixed z-10 bg-white items-center w-full h-[80px] 
+                       lg:px-[100px]  xl:px-[160px] border border-[#D3D3D3]-b '>
+            <img className='lg:w-[140px] 2xl:w-[180px]' src={logoHeader} alt='' />
             <div className='flex gap-[20px] items-center'>
                 <Link to={'/login'}>Login</Link>
                 <div>Contact us</div>

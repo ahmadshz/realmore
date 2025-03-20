@@ -83,15 +83,15 @@ const ScrollBarList = ({ children, height = "400px" }) => {
             {/* Scrollable Content */}
             <div
                 ref={contentRef}
-                className="flex-1 overflow-hidden  custom-scrollbar"
-                style={{ height }}
+                className={`flex-1 overflow-hidden  custom-scrollbar  lg:h-[400px] `}
+           
             >
                 {children}
             </div>
 
             {/* Custom Scrollbar */}
             <div
-                className="relative w-[1px] lg:left-3  xl:left-5 2xl:left-6 bg-[#D3D3D3] rounded-full"
+                className="relative hidden lg:block w-[1px] lg:left-3  xl:left-5 2xl:left-6 bg-[#D3D3D3] rounded-full"
                 style={{ height }}
                 ref={scrollRef}
             >

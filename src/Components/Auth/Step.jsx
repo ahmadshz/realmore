@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
 
-const Step = ({ stepNumber, inputs, onChange }) => {
+const Step = ({ stepNumber, inputs, onChange, color }) => {
     // Map placeholders to state keys
     const placeholderToName = {
         'First Name': 'firstname', // Change to match backend
@@ -22,6 +22,7 @@ const Step = ({ stepNumber, inputs, onChange }) => {
                     <div key={index} className='flex gap-[16px]'>
                         {input.map((placeholder, idx) => (
                             <InputField
+                                color={color}
                                 key={idx}
                                 name={placeholderToName[placeholder]} // Use mapped name
                                 placeholder={placeholder}

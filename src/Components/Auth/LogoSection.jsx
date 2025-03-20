@@ -1,7 +1,6 @@
 import React from 'react'
-import logo from '../../assets/LogoGreen/LogoGreen.png'
 
-const LogoSection = () => {
+const LogoSection = ({logo}) => {
     return (
         <div >
             <div className='h-screen  lg:w-[200px] xl:w-[305px] hidden lg:flex justify-center items-center border-r border-[#D3D3D3]-r'>

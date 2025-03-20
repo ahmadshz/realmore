@@ -4,8 +4,8 @@ import logo from '../../assets/LogoGreen/logoMobile.png'
 
 const AuthMobile = () => {
     return (
-        <div className='  min-h-screen lg:hidden'>
-            <div className='flex flex-col items-center   mt-[270px]'>
+        <div className='   lg:hidden'>
+            <div className='flex flex-col items-center  justify-center min-h-screen'>
                 <img className='w-[270px] h-[63px]  ' src={logo} alt='' />
 
                 <div className='mt-[230px] flex flex-col gap-[10px]'>

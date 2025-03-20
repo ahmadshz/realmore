@@ -21,7 +21,7 @@ const CustomBarChar = () => {
                 {/* X-Axis */}
                 <XAxis
                     dataKey="name"
-                    tick={{ fontSize: 8 }}
+                    tick={{ fontSize: 6 }}
                     tickLine={false}
                     interval={0} 
                     height={30} 

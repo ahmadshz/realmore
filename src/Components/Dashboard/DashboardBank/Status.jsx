@@ -10,17 +10,17 @@ const Status = () => {
        
     ];
     return (
-        <div className='mt-[10px]'>
+        <div className='mt-[25px] lg:mt-[10px]'>
             <div className='flex justify-between items-center'>
                 <h1 className='text-[22px] font-bold'>Status</h1>
                 <div className='flex items-center gap-[10px]'>
                     <Link className='px-[16px] py-[6px] rounded-[4px] flex justify-center items-center
-                               bg-[#076152] text-white text-[12px] font-bold w-[98px] ' >Overview</Link>
+                               bg-[#076152] text-white text-[12px] font-bold w-[98px] h-[27px] ' >Overview</Link>
                     <Link className='px-[16px] py-[6px] rounded-[4px] flex justify-center items-center
                                bg-[#F0F0F0]  text-[12px] font-bold w-[98px] ' >Dealing</Link>
                 </div>
             </div>
-            <div className='mt-4  mb-8 flex lg:flex-wrap gap-2'>
+            <div className='mt-4  mb-8 flex overflow-x-scroll custom-scrollbar xl:overflow-x-hidden  xl:flex-wrap gap-2'>
                 {consultants.map((consultant, index) => (
                     <ConsultantCard
                         key={index}

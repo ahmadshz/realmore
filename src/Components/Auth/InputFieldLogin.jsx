@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IoEyeSharp } from 'react-icons/io5'; // Assuming you're using react-icons for the eye icon
 import passwordIcon from '../../assets/icons/ShowPassword.png';
 
-function InputFieldLogin({ email, setEmail, password, setPassword }) {
+function InputFieldLogin({ email, setEmail, password, setPassword, color }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -10,7 +10,8 @@ function InputFieldLogin({ email, setEmail, password, setPassword }) {
       {/* Email Input */}
       <input
         type='email'
-        className='border border-[#D3D3D3] lg:w-[470px] xl:w-[709px] h-[50px] p-[18px] rounded-[10px] text-[18px] focus:outline-[#318C70]'
+        className='border border-[#D3D3D3] lg:w-[470px] xl:w-[709px] h-[50px] p-[18px] rounded-[10px] text-[18px] '
+        style={{ outlineColor: color }}
         placeholder='Email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -20,7 +21,8 @@ function InputFieldLogin({ email, setEmail, password, setPassword }) {
       <div className='relative lg:w-[470px] xl:w-[709px]'>
         <input
           type={showPassword ? 'text' : 'password'}
-          className='border border-[#D3D3D3] lg:w-[470px] xl:w-[709px] h-[50px] p-[18px] rounded-[10px] text-[18px] focus:outline-[#318C70]'
+          className='border border-[#D3D3D3] lg:w-[470px] xl:w-[709px] h-[50px] p-[18px] rounded-[10px] text-[18px] '
+          style={{ outlineColor: color }}
           placeholder='Password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import polygon from '../../../assets/IconDashboard/Polygon.png';
 import axios from 'axios';
 import { baseUrl } from '../../../Api/Api';
@@ -26,6 +26,9 @@ const FormAddClient = () => {
         maxSpace: '',
     });
 
+    // Navigate
+    const navigate = useNavigate()
+
     // Cookies 
     const cookies = new Cookies();
     const token = cookies.get('auth_token');
@@ -44,14 +47,15 @@ const FormAddClient = () => {
         e.preventDefault();
 
         try {
-         await axios.post(`${baseUrl}/bankclient/add-client`, formData, {
+            await axios.post(`${baseUrl}/bankclient/add-client`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
                 },
             });
 
-         
+            navigate('/bankemployee/clientPage')
+
         } catch (error) {
             console.error('Error adding client:', error);
             alert('Failed to add client. Please try again.');
@@ -60,7 +64,7 @@ const FormAddClient = () => {
 
     return (
         <div>
-            <form className='flex flex-col gap-[40px] py-[60px]' onSubmit={handleSubmit}>
+            <form className='flex flex-col gap-[40px] my-[40px]' onSubmit={handleSubmit}>
                 {/* Contact Details */}
                 <div className='flex flex-col gap-[24px]'>
                     <div className='flex justify-between items-center'>
