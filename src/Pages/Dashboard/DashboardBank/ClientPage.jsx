@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeaderSection from '../../../Components/Auth/HeaderSection';
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard';
-import addClient from '../../../assets/IconDashboard/addClient.png';
+import addClient from '../../../assets/IconDashboard/addClient.svg';
 import notification from '../../../assets/IconDashboard/notification.png';
 import { Link } from 'react-router-dom';
 import ClientsSummaryCard from '../../../Components/Dashboard/DashboardBank/ClientsSummaryCard';

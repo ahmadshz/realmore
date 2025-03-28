@@ -31,7 +31,7 @@ const SideBar = ({
             path3: pathClientPage3,
         },
         {
-            path: 'overview/metrics',
+            path: 'overview',
             title: 'Overview',
             icon: overview,
         },

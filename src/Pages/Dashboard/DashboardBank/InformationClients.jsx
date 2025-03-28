@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import HeaderSection from '../../../Components/Auth/HeaderSection'
 import { Link } from 'react-router-dom'
-import addClient from '../../../assets/IconDashboard/addClient.png'
+import addClient from '../../../assets/IconDashboard/addClient.svg'
 import notification from '../../../assets/IconDashboard/notification.png'
 import ClientCard from '../../../Components/Dashboard/DashboardBank/ClientCard'
 import MetrixCard from '../../../Components/Dashboard/DashboardBank/MetrixCard'

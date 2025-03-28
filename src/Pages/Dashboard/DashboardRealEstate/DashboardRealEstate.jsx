@@ -12,7 +12,7 @@ const DashboardRealEstate = () => {
         <div>
             <SideBar
                 color='text-[#714E95]'
-                pathDashboard='dashboardRealEstate'
+                pathDashboard='dashboard'
                 pathClientPage='clientPage'
                 pathClientPage2='clientPage/addClient'
                 pathClientPage3='clientPage'
@@ -23,7 +23,7 @@ const DashboardRealEstate = () => {
                 bg='bg-[#714E95]'
             />
             <EndSection />
-            <div className=' lg:ml-[210px] xl:ml-[260px]  2xl:ml-[300px] lg:w-[530px] xl:w-[900px] 2xl:w-[1242px] overflow-x-hidden'>
+            <div className=' lg:ml-[210px] xl:ml-[260px]  2xl:ml-[305px] lg:w-[530px] xl:w-[900px] 2xl:w-[1242px] overflow-x-hidden'>
                 <Outlet />
             </div>
         </div>

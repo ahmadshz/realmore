@@ -8,12 +8,13 @@ import InformationClients from './Pages/Dashboard/DashboardBank/InformationClien
 import AddClient from './Pages/Dashboard/DashboardBank/AddClient'
 import AuthMobile from './Components/Auth/AuthMobile'
 import ClientPage from './Pages/Dashboard/DashboardBank/ClientPage'
-import Overview from './Pages/Dashboard/DashboardBank/Overview'
 import OverviewMetrics from './Pages/Dashboard/DashboardBank/OverviewMetrics'
 import LoginRealEstate from './Pages/Auth/AuthRealEstate/LoginRealEstate'
 import RegisterRealEstate from './Pages/Auth/AuthRealEstate/RegisterRealEstate'
 import DashboardRealEstate from './Pages/Dashboard/DashboardRealEstate/DashboardRealEstate'
 import InformationRealEstate from './Pages/Dashboard/DashboardRealEstate/InformationRealEstate'
+import ClientPageRealEstate from './Pages/Dashboard/DashboardRealEstate/ClientPageRealEstate'
+import OverviewRealEstate from './Pages/Dashboard/DashboardRealEstate/OverviewRealEstate'
 
 const App = () => {
   return (
@@ -37,17 +38,14 @@ const App = () => {
           <Route path="dashboard" element={<InformationClients />} />
           <Route path="clientPage" element={<ClientPage />} />
           <Route path="clientPage/addClient" element={<AddClient />} />
-          <Route path="overview" element={<Overview />} />
-          <Route path="overview/metrics" element={<OverviewMetrics />} />
+          <Route path="overview" element={<OverviewMetrics />} />
         </Route>
 
         {/* Dashboard Real Estate */}
         <Route path="/realEstate" element={<DashboardRealEstate />} >
-          <Route path="dashboardRealEstate" element={<InformationRealEstate />} />
-          <Route path="clientPage" element={<ClientPage />} />
-          <Route path="clientPage/addClient" element={<AddClient />} />
-          <Route path="overview" element={<Overview />} />
-          <Route path="overview/metrics" element={<OverviewMetrics />} />
+          <Route path="dashboard" element={<InformationRealEstate />} />
+          <Route path="clientPage" element={<ClientPageRealEstate />} />
+          <Route path="overview" element={<OverviewRealEstate />} />
         </Route>
 
       </Routes>

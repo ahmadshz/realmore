@@ -1,15 +1,17 @@
-import Progress from "./Progress";
 
-const MetricCard = ({ title, value, icon, additionalText, progressBar, className, desc, classValue, progress, shadow, description }) => {
+const MetricCard = ({ title, value, icon, additionalText, progressBar, className, desc, classValue, progress, shadow, description, empty }) => {
     return (
         <div className={`border relative border-[#D3D3D3]  flex items-center justify-between ${shadow} ${className}`}>
             <div className='flex flex-col justify-between h-full leading-[1.2]'>
-                <h1 className='text-[14px]  lg:text-[16px] text-[#858585]'>{title}</h1>
-
+                <h1 className='text-[12px]  lg:text-[16px] text-[#858585]'>{title}</h1>
+                <div className="hidden xl:block">
+                    {empty && <div />}
+                    {empty && <div />}
+                </div>
                 <div className={`${classValue}`}>{value}</div>
-                <div className=" lg:hidden text-[16px]">{description}</div>
+               { description && <div className=" lg:hidden text-[16px]">{description}</div>}
 
-                <h2 className="text-[16px] ">{desc}</h2>
+                <h2 className=" text-[12px] lg:text-[16px] ">{desc}</h2>
             </div>
             <div className="flex items-center gap-2">
                 {additionalText && <span className='text-[12px] text-[#858585]'>{additionalText}</span>}
