@@ -1,22 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import moreinfo from '../../../assets/IconDashboard/moreInfo.png'
-import circle from '../../../assets/IconDashboard/circle.png'
-import diagram from '../../../assets/IconDashboard/diagram.png'
-import location from '../../../assets/IconDashboard/location.png'
-import map from '../../../assets/IconDashboard/map.png'
 import { BsArrowRight } from 'react-icons/bs'
 
-const ClientCard = ({budget, name , amount ,city,district}) => {
+const ClientCard = ({budget, name , amount ,city,district , color ,iconMore ,iconCircle ,diagramIcon ,map ,location}) => {
 
     return (
-        <div className='my-[46px] border border-[#D3D3D3] w-[309px] lg:w-[330px] min-h-[292px] rounded-[10px] 
+        <div className='my-[25px] border border-[#D3D3D3] w-[309px] lg:w-[330px] min-h-[292px] rounded-[10px] 
                         p-[10px] lg:p-[20px] flex flex-col  gap-[20px] '>
             {/* Client Name */}
             <div className='flex  justify-between'>
                 <h1 className='font-bold text-[18px] '>{name}</h1>
                 <Link className=' flex items-center gap-[3px]' >
-                    <img src={moreinfo} alt='' />
+                    <img src={iconMore} alt='' />
                     <span className='text-[8px] text-[#858585]'>more info</span>
                 </Link>
             </div>
@@ -28,18 +23,18 @@ const ClientCard = ({budget, name , amount ,city,district}) => {
                     <h1 className='text-[12px] text-[#858585] '>Mortgage Details</h1>
                     <div className='flex justify-between gap-2 '>
                         <div className='w-[137px] h-[52px] border border-[#D3D3D3] rounded-[10px] p-[10px] flex gap-[8px] '>
-                            <div className='flex justify-center items-center w-[32px] h-[32px] rounded-[6px] p-[6px]  bg-[#F6F6F6]'> <img src={circle} alt='' /></div>
+                            <div className='flex justify-center items-center w-[32px] h-[32px] rounded-[6px] p-[6px]  bg-[#F6F6F6]'> <img src={iconCircle} alt='' /></div>
                             <div>
                                 <h1 className='text-[8px] text-[#858585] '>Budget</h1>
-                                <h1 className='text-[10px] font-bold text-[#858585] '>{budget} <span className='text-[#318C70]'>SAR</span> </h1>
+                                <h1 className='text-[10px] font-bold text-[#858585] '>{budget} <span className={`${color}`}>SAR</span> </h1>
 
                             </div>
                         </div>
                         <div className='w-[137px] h-[52px] border border-[#D3D3D3] rounded-[10px] p-[10px] flex gap-[8px] '>
-                            <div className='flex justify-center items-center w-[32px] h-[32px] rounded-[6px] p-[6px]  bg-[#F6F6F6]'> <img src={diagram} alt='' /></div>
+                            <div className='flex justify-center items-center w-[32px] h-[32px] rounded-[6px] p-[6px]  bg-[#F6F6F6]'> <img src={diagramIcon} alt='' /></div>
                             <div>
                                 <h1 className='text-[8px] text-[#858585] '>Loan Amount</h1>
-                                <h1 className='text-[10px] font-bold text-[#858585] '>{amount} <span className='text-[#318C70]'>SAR</span> </h1>
+                                <h1 className='text-[10px] font-bold text-[#858585] '>{amount} <span className={`${color}`}>SAR</span> </h1>
 
                             </div>
                         </div>

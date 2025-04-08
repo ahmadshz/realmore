@@ -5,10 +5,9 @@ const ExportControls = () => {
     return (
         <div className='mt-[10px] lg:mt-[40px] flex flex-col gap-[15px] '>
             <HeaderSection font='font-bold' firstTitle='Export Data' titleSeconde='Export data based on specific criteria.' />
-
             <div className='flex flex-col gap-[10px]  lg:gap-[24px]   '>
                 {/* Date Filter */}
-                <div className=' border border-[#D3D3D3] h-[57px] px-[16px] rounded-[10px] flex items-center justify-between'>
+                <section className=' border border-[#D3D3D3] h-[57px] px-[16px] rounded-[10px] flex items-center justify-between'>
                     <div className='text-[16px] lg:text-[18px] text-[#858585]'>
                         Select Date Range
                     </div>
@@ -16,8 +15,9 @@ const ExportControls = () => {
                     <div className='bg-[#8179AD] text-white px-[8px] h-[37px] rounded-[4px] flex items-center justify-center '>
                         Select Dates
                     </div>
-                </div>
-                <div>
+                </section>
+
+                <section>
                     <div className=' flex  flex-wrap xl:flex-nowrap gap-[10px] items-center '>
                         <div className='text-[16px] lg:text-[18px] text-[#858585] w-full xl:min-w-[350px] 2xl:w-3/5   border border-[#D3D3D3] h-[57px] px-[16px] rounded-[10px] flex items-center justify-between'>
                             Select Date Range
@@ -32,10 +32,9 @@ const ExportControls = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {/* Buttons */}
-
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-[10px] mt-[40px] lg:mt-0'>
                     <div className='border border-[#714E95] rounded-[10px] h-[50px] flex justify-center items-center
                                      bg-[#714E95] lg:bg-white text-white lg:text-[#714E95] text-[22px] font-bold'>Export as PDF</div>
@@ -43,8 +42,6 @@ const ExportControls = () => {
                                  h-[50px] flex justify-center items-center'>Export as CSV</div>
                 </div>
             </div>
-
-
         </div>
     )
 }

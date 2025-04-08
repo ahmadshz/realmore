@@ -69,7 +69,7 @@ const RegisterRealEstate = () => {
 
         try {
             await axios.post(`${baseUrl}/user/register`, formData);
-            navigate('/bankemployee/dashboard');
+            navigate('/realEstate/dashboard');
         } catch (error) {
             setError(error.response?.data?.message || "An unexpected error occurred. Please try again.");
         } finally {

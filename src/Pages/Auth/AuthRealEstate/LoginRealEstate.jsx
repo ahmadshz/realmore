@@ -43,7 +43,7 @@ const LoginRealEstate = () => {
 
       if (token) {
         cookie.set('auth_token', token, { path: '/' });
-        navigate('/bankemployee/dashboard');
+        navigate('/realEstate/dashboard');
       }
     } catch (error) {
       setError('Invalid email or password. Please try again.', error.response ? error.response.data : error.message);

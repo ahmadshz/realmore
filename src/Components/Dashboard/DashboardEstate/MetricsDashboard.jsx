@@ -22,10 +22,10 @@ const MetricsDashboard = () => {
                     className=" h-[95px] lg:h-[151px] rounded-[6px]  px-[10px] py-[6px] lg:p-[16px] order-2 xl:order-2"
                 />
                 <MetricCard
-                    title="Number of Client Visits"
-                    value="2500"
+                    title="Number of Properties Sold"
+                    value="25"
                     empty
-                    desc='-10% from last month'
+                    desc='+8% from last month'
                     classValue='text-[20px] xl:text-[28px] text-[#714E95] font-bold'
                     className="h-[95px] lg:h-[151px] rounded-[6px]  px-[10px] py-[6px] lg:p-[16px] order-2 xl:order-2"
                 />
@@ -63,7 +63,8 @@ const MetricsDashboard = () => {
                     classValue='text-[20px] xl:text-[28px] text-[#714E95] font-bold'
                     className=" h-[95px] lg:h-[151px] rounded-[6px]  px-[10px] py-[6px] lg:p-[16px] order-2 xl:order-2"
                 />
-            </div></div>
+            </div>
+        </div>
     )
 }
 

@@ -7,7 +7,7 @@ import privacy from '../../../assets/icons/privacy.png';
 import contact from '../../../assets/icons/contact.png';
 import services from '../../../assets/icons/services.png';
 
-const EndSection = () => {
+const EndSection = ({ deals }) => {
     return (
         <div className='hidden fixed right-0 lg:w-[280px] xl:w-[331px] 2xl:w-[400px] border-l h-screen lg:flex flex-col justify-between items-center py-[40px]'>
             {/* Search Bar */}
@@ -25,7 +25,9 @@ const EndSection = () => {
             </div>
 
             {/* Closed Deals and Information Sections */}
-            <ClosedDeals />
+            {deals &&
+                <ClosedDeals />
+            }
             <Information about={about} privacy={privacy} contact={contact} services={services} />
         </div>
     );

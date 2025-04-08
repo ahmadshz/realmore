@@ -11,7 +11,7 @@ const ClientPageRealEstate = () => {
     const titleSeconde = 'Property Preferences';
 
     // State 
-    const [selected, setSelected] = useState('Date'); // Default is 'Date'
+    const [selected, setSelected] = useState('Date'); 
 
     return (
         <div>

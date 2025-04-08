@@ -9,7 +9,7 @@ const Button = ({ color, type = 'button', loading }) => {
                        ${loading ? 'opacity-80 cursor-not-allowed' : ''}`}
             style={{ backgroundColor: color }}
         >
-            Sign Up
+            Sign In
         </button>
     );
 };

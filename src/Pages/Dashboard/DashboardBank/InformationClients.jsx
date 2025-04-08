@@ -9,6 +9,12 @@ import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderD
 import axios from 'axios'
 import { baseUrl } from '../../../Api/Api'
 import Cookies from 'universal-cookie'
+import moreinfo from '../../../assets/IconDashboard/moreInfo.png'
+import circle from '../../../assets/IconDashboard/circle.png'
+import diagram from '../../../assets/IconDashboard/diagram.png'
+import location from '../../../assets/IconDashboard/location.png'
+import map from '../../../assets/IconDashboard/map.png'
+
 
 const InformationClients = () => {
     const [clients, setClients] = useState([])
@@ -59,6 +65,12 @@ const InformationClients = () => {
                                 amount={item.approvedLoanAmount}
                                 city={item.propertyCity}
                                 district={item.propertyDistrict}
+                                color={'text-[#318C70]'}
+                                iconMore={moreinfo}
+                                iconCircle={circle}
+                                diagramIcon={diagram}
+                                location={location}
+                                map={map}
                             />
                         ))}
 

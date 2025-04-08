@@ -20,7 +20,7 @@ const DashboardBank = () => {
                 iconCLient={client}
                 overview={overview}
                 bg='bg-[#328C71]' />
-            <EndSection />
+            <EndSection deals />
             <div className=' lg:ml-[210px] xl:ml-[260px]  2xl:ml-[300px] lg:w-[530px] xl:w-[900px] 2xl:w-[1242px] overflow-x-hidden'>
                 <Outlet />
             </div>

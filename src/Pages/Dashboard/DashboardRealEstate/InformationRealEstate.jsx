@@ -98,17 +98,23 @@ const InformationRealEstate = () => {
         (property) => property.type === selected
     );
 
+    const propertyTypes = ["Duplex", "Villa", "Apartment"];
+
+
     return (
         <div>
+            {/* Header */}
             <HeaderDashboard logo={headerLogo} notification={notification} />
 
-            <div className='min-h-screen flex flex-col xl:w-[850px] 2xl:w-[1205px] pt-[50px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] mb-10 overflow-x-hidden'>
+            {/* Body */}
+            <div className='min-h-screen flex flex-col xl:w-[850px] 2xl:w-[1205px] pt-[50px] lg:pt-[97px] \
+                            px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] mb-10 overflow-x-hidden'>
                 <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} notification={notification} />
 
                 <ListProperties />
 
                 {/* Filter */}
-                <PropertiesType selected={selected} setSelected={setSelected} />
+                <PropertiesType selected={selected} setSelected={setSelected} propertyTypes={propertyTypes} bg={'bg-[#714E95]'} />
 
                 <div className='flex items-center lg:h-[700px] gap-4 mt-[32px] overflow-x-auto whitespace-nowrap'>
                     {filteredProperties.length > 0 ? (

@@ -3,7 +3,7 @@ const MetricCard = ({ title, value, icon, additionalText, progressBar, className
     return (
         <div className={`border relative border-[#D3D3D3]  flex items-center justify-between ${shadow} ${className}`}>
             <div className='flex flex-col justify-between h-full leading-[1.2]'>
-                <h1 className='text-[12px]  lg:text-[16px] text-[#858585]'>{title}</h1>
+                <h1 className='text-[14px]  lg:text-[16px] text-[#858585]'>{title}</h1>
                 <div className="hidden xl:block">
                     {empty && <div />}
                     {empty && <div />}

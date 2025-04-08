@@ -8,7 +8,6 @@ const InfoCard = ({ icon, title, value , currency }) => {
             <div>
                 <h1 className='text-[8px] text-[#858585] '>{title}</h1>
                 <h1 className='text-[10px] font-bold  text-[#858585] '>{value} <span className='text-[#318C70]'>{currency}</span> </h1>
-
             </div>
 
         </div>
