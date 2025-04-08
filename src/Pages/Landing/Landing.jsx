@@ -63,7 +63,7 @@ const Landing = () => {
                 login Admin
             </Link>
             <br />
-            <Link className='text-3xl text-red-400' to={'/admin'}>
+            <Link className='text-3xl text-red-400' to={'/admin/dashboard'}>
                  Dashboard Admin
             </Link>
             <br />
