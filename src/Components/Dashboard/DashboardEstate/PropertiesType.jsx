@@ -1,9 +1,9 @@
 import React from "react";
 
-const PropertiesType = ({ selected, setSelected , propertyTypes ,bg }) => {
+const PropertiesType = ({ selected, setSelected , propertyTypes ,bg , mt ,justify}) => {
 
     return (
-        <div className="mt-[20px] flex items-center justify-center lg:justify-start gap-[12px]">
+        <div className={`mt-[20px] ${mt} flex items-center ${justify}  lg:justify-start gap-[12px]`}>
             {propertyTypes.map((type) => (
                 <div
                     key={type}

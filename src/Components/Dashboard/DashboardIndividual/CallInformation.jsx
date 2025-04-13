@@ -6,14 +6,15 @@ import FormTextArea from "./FormTextArea";
 import FormButtons from "./FormButtons";
 import polygon from '../../../assets/Iconindividual/polygon.svg';
 
-const TaskInformation = ({ bgButton , color }) => {
+const CallInformation = ({ bgButton , color }) => {
     const [task, setTask] = useState({
         name: "",
         dueDate: "",
-        repeat: false,
+        dueTime: "",
         reminder: false,
+        calType: "",
         relatedTo: "",
-        description: "",
+        calAgenda: "",
         highPriority: false,
         completed: false,
         owner: "User Name",
@@ -43,44 +44,53 @@ const TaskInformation = ({ bgButton , color }) => {
         <div className="flex justify-center">
             <div className="w-full   ">
                 <div className="flex items-center justify-between mb-10">
-                    <h2 className="text-[32px]">Task Information</h2>
+                    <h2 className="text-[32px]">Call Information</h2>
                     <OwnerInfo owner={task.owner} polygon={polygon} />
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-6">
                     <FormInput
-                        label="Task Name"
+                        label="To/From"
                         name="name"
                         value={task.name}
                         onChange={handleChange}
-                        placeholder="Enter Task Name"
+                        placeholder="Enter Event Name"
                     />
 
-                    <FormInput
-                        type="date"
-                        label="Due Date"
-                        name="dueDate"
-                        value={task.dueDate}
-                        onChange={handleChange}
-                        className="uppercase"
-                    />
+                    <div className="grid grid-cols-2 gap-[20px] items-center">
+                        <FormInput
+                            label="Due Date"
+                            name="dueDate"
+                            value={task.dueDate}
+                            onChange={handleChange}
+                            className="uppercase"
+                            placeholder="DD/MM/YYYY"
 
-                    <CheckBoxWithLabel
-                        checked={task.repeat}
-                        onChange={() => handleCheckboxChange('repeat')}
-                        label="Repeat"
-                        color={color}
-                        bg="#D3D3D3"
-                    />
+                        />
+                        <FormInput
+                            name="dueTime"
+                            value={task.dueTime}
+                            onChange={handleChange}
+                            className="uppercase -mb-5"
+                            placeholder="HH:MM"
+                        />
+                    </div>
 
                     <CheckBoxWithLabel
                         checked={task.reminder}
-                        onChange={() => handleCheckboxChange('reminder')}
+                        onChange={() => handleCheckboxChange('repeat')}
                         label="Reminder"
                         color={color}
                         bg="#D3D3D3"
                     />
 
+                    <FormInput
+                        label="Call Type"
+                        name="relatedTo"
+                        value={task.calType}
+                        onChange={handleChange}
+                        placeholder="Online"
+                    />
                     <FormInput
                         label="Related To"
                         name="relatedTo"
@@ -88,29 +98,12 @@ const TaskInformation = ({ bgButton , color }) => {
                         onChange={handleChange}
                         placeholder="Search Contacts/Companies/Pipelines"
                     />
-
-                    <FormTextArea
-                        label="Description"
-                        name="description"
-                        value={task.description}
+                    <FormInput
+                        label="Call Agenda"
+                        name="relatedTo"
+                        value={task.calAgenda}
                         onChange={handleChange}
-                        placeholder="A few words about the task"
-                    />
-
-                    <CheckBoxWithLabel
-                        checked={task.highPriority}
-                        onChange={() => handleCheckboxChange('highPriority')}
-                        label="Mark as High Priority"
-                        color={color}
-                        bg="#D3D3D3"
-                    />
-
-                    <CheckBoxWithLabel
-                        checked={task.completed}
-                        onChange={() => handleCheckboxChange('completed')}
-                        label="Mark as Completed"
-                        color={color}
-                        bg="#D3D3D3"
+                        placeholder=""
                     />
 
                     <FormButtons
@@ -124,4 +117,4 @@ const TaskInformation = ({ bgButton , color }) => {
     );
 };
 
-export default TaskInformation;
+export default CallInformation;

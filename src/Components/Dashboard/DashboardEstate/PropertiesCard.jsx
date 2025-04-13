@@ -1,10 +1,9 @@
 import React from "react";
-import ciecle from '../../../assets/iconRealEstate/circle.png'
 import InfoCard from "../DashboardBank/InfoCard";
 
-const PropertiesCard = ({ property }) => {
+const PropertiesCard = ({ property, bg, circle  }) => {
     return (
-        <div className=" w-[310px] lg:w-fit bg-white  rounded-[10px] p-5 border border-[#D3D3D3]">
+        <div className=" w-[310px] lg:w-fit bg-white  rounded-[10px] p-5 border border-[#D3D3D3] -mb-3">
             {/* Image Section */}
             <div className="relative">
                 <img
@@ -19,8 +18,8 @@ const PropertiesCard = ({ property }) => {
             <div className="mt-[18px]">
                 <h2 className="text-[12px]  text-[#858585]">Details</h2>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
-                    <InfoCard icon={ciecle} title='Budget' value={property.budget} />
-                    <InfoCard icon={ciecle} title='Budget' value={property.budget} />
+                    <InfoCard icon={circle} title='Budget' value={property.budget} />
+                    <InfoCard icon={circle} title='Budget' value={property.budget} />
                 </div>
             </div>
 
@@ -30,7 +29,7 @@ const PropertiesCard = ({ property }) => {
                 <div className="grid grid-cols-2  lg:grid-cols-3 gap-2 mt-2">
                     {property.preferences.map((pref, index) => (
                         <div key={index}>
-                            <InfoCard icon={ciecle} title={pref.label} value={pref.value} />
+                            <InfoCard icon={pref.icon} title={pref.label} value={pref.value} />
 
                         </div>
                     ))}
@@ -41,16 +40,18 @@ const PropertiesCard = ({ property }) => {
             <div className="mt-[18px]">
                 <h2 className="text-[12px]  text-[#858585]">{window.innerWidth < 768 ? 'Time available for visit' : 'Consultant'}</h2>
                 <div className="grid grid-cols-2  lg:grid-cols-3 gap-2 mt-2">
-                    <div className="hidden lg:block"> <InfoCard icon={ciecle} title='' value={property.consultant} /></div>
-                    <InfoCard icon={ciecle} title='Visit Date' value={property.visitDate} />
-                    <InfoCard icon={ciecle} title='Visit Time' value={property.visitTime} />
+                    <div className="hidden lg:block">
+                        <InfoCard icon={circle} title='' value={property.consultant} />
+                    </div>
+                    <InfoCard icon={circle} title='Visit Date' value={property.visitDate} />
+                    <InfoCard icon={circle} title='Visit Time' value={property.visitTime} />
 
                 </div>
             </div>
 
             {/* Reassign Button */}
             <div className="mt-5">
-                <button className=" w-full h-[26px] bg-[#714E95] text-[14px] text-white  rounded-[4px] flex justify-center items-center ">
+                <button className={` w-full h-[26px]  ${bg} text-[14px] text-white  rounded-[4px] flex justify-center items-center `}>
                     Reassign
                 </button>
             </div>

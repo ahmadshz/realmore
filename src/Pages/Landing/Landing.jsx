@@ -56,16 +56,31 @@ const Landing = () => {
             <br />
             <br />
 
+            <h1 className='text-3xl'>QA</h1>
+
+            <br />
+            <Link className='text-3xl text-red-400' to={'/loginQA'}>
+                login QA
+            </Link>
+            <br />
+            <Link className='text-3xl text-red-400' to={'/QA/dashboard'}>
+                Dashboard QA
+            </Link>
+            <br />
+            <br />
+            <br />
+
             <h1 className='text-3xl'>Admin</h1>
-            
             <br />
             <Link className='text-3xl text-red-400' to={'/loginAdmin'}>
                 login Admin
             </Link>
             <br />
             <Link className='text-3xl text-red-400' to={'/admin/dashboard'}>
-                 Dashboard Admin
+                Dashboard Admin
             </Link>
+            <br />
+            <br />
             <br />
 
         </div>

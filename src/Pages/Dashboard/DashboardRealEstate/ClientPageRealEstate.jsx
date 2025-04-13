@@ -7,14 +7,17 @@ import header from '../../../assets/iconRealEstate/LogoHeader.png';
 import AddPropertiesCSV from '../../../Components/Dashboard/DashboardEstate/AddPropertiesCSV';
 
 const ClientPageRealEstate = () => {
+
+    // Title for HeaderSection
     const firstTitle = 'Adding New Property';
     const titleSeconde = 'Property Preferences';
 
     // State 
-    const [selected, setSelected] = useState('Date'); 
+    const [selected, setSelected] = useState('Date');
 
     return (
         <div>
+            {/*Header for mobile */}
             <HeaderDashboard logo={header} notification={notification} />
 
             <div className='min-h-screen flex flex-col xl:w-[850px] 2xl:w-[1205px] pt-[50px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] mb-10 overflow-x-hidden'>

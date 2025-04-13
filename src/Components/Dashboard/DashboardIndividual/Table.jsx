@@ -3,7 +3,7 @@ import frame from '../../../assets/Iconindividual/frame.svg'
 import add from '../../../assets/Iconindividual/note-add.svg'
 import { FaCheck } from 'react-icons/fa';
 
-const Table = () => {
+const Table = ({bg}) => {
     const [checkedAll, setCheckedAll] = useState(false);
     const [selectedTasks, setSelectedTasks] = useState([]);
 
@@ -43,11 +43,11 @@ const Table = () => {
         const base = "inline-block   w-[110px] h-[30px] text-[14px] rounded-[6px]  flex justify-center items-center";
         switch (status) {
             case "In Progress":
-                return `${base} bg-orange-100 text-orange-500`;
+                return `${base} bg-[#FFF1DD] text-[#EA9A22] text-[14px] mx-auto`;
             case "Under Review":
-                return `${base} bg-gray-100 text-gray-500`;
+                return `${base} bg-[#F6F6F6] text-[#545454] text-[14px] mx-auto`;
             case "Completed":
-                return `${base} bg-green-100 text-green-500`;
+                return `${base} bg-[#DDFFE3] text-[#1BC13F] text-[14px]  mx-auto`;
             default:
                 return base;
         }
@@ -76,12 +76,13 @@ const Table = () => {
 
             <div className=" overflow-x-auto mt-[40px] ">
                 <table className="min-w-full bg-white    ">
+                {/* Thead */}
                     <thead className="   px-10 rounded-[8px] ">
                         <tr className="text-left text-[16px] font-bold bg-[#F2F2F2] ">
-                            <th className="pl-10 py-6">
+                            <th className="pl-7 2xl:pl-10 py-6">
                                 <div
                                     className={`relative w-[20px] h-[20px] rounded-[2px] cursor-pointer
-                                                ${checkedAll ? 'bg-[#EA9B23]' : 'bg-[#EFEFEF] border border-[#858585]'}`}
+                                                ${checkedAll ? bg : 'bg-[#EFEFEF] border border-[#858585]'}`}
                                    
                                     onClick={handleSelectAll}
                                 >
@@ -97,13 +98,13 @@ const Table = () => {
                                 </div>
                             </th>
 
-                            <th className="px-3 py-6 text-center">Task Name</th>
-                            <th className="px-3 py-6 text-center">Due Date</th>
-                            <th className="px-3 py-6 text-center">Status</th>
-                            <th className="px-3 py-6 text-center">Priority</th>
-                            <th className="px-3 py-6 text-center">Related To</th>
-                            <th className="px-3 py-6 text-center">Task Owner</th>
-                            <th className="px-3 py-6 text-[#898989]">+ Create Field</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Task Name</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Due Date</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Status</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Priority</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Related To</th>
+                            <th className="px-3 py-6 text-center lg:min-w-[140px] 2xl:min-w-[110px]">Task Owner</th>
+                            <th className="px-3 py-6 text-[#898989] lg:min-w-[140px] 2xl:min-w-[110px]">+ Create Field</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,10 +113,10 @@ const Table = () => {
                                 key={idx}
                                 className={`border-b border-[#C9C9C9]}`}
                             >
-                                <td className="pl-10 py-6">
+                                <td className="pl-7 2xl:pl-10 py-4">
                                     <div
                                         className={`relative w-[20px] h-[20px] rounded-[2px]  cursor-pointer ${selectedTasks.includes(task.id) ?
-                                            'bg-[#EA9B23]' : 'bg-[#EFEFEF] border border-[#858585]'} `}
+                                            bg : 'bg-[#EFEFEF] border border-[#858585]'} `}
 
                                         onClick={() => handleSelectTask(task.id)}
                                     >
@@ -126,20 +127,21 @@ const Table = () => {
                                             onChange={() => handleSelectTask(task.id)}
                                         />
                                         {selectedTasks.includes(task.id) && (
-                                            <FaCheck className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs" />
+                                            <FaCheck className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                                                              text-white text-xs" />
                                         )}
                                     </div>
                                 </td>
 
-                                <td className="px-3 py-6 text-center font-bold">Task Name</td>
-                                <td className="px-3 py-6 text-center">20/12/2024</td>
-                                <td className="px-3 p-6 text-center">
+                                <td className="px-3 py-4 text-center font-bold  text-[14px]">Task Name</td>
+                                <td className="px-3 py-4 text-center text-[14px]">20/12/2024</td>
+                                <td className="px-3 p-4 text-center text-[14px]">
                                     <span className={getStatusBadge(task.status)}>{task.status}</span>
                                 </td>
-                                <td className="px-3 py-6 text-center">High</td>
-                                <td className="px-3 py-6 text-center">Riyadh</td>
-                                <td className="px-3 py-6 text-center">Ali Mohamed</td>
-                                <td className="px-3 py-6 text-center"></td>
+                                <td className="px-3 py-4 text-center text-[14px]">High</td>
+                                <td className="px-3 py-4 text-center text-[14px]">Riyadh</td>
+                                <td className="px-3 py-4 text-center text-[14px]">Ali Mohamed</td>
+                                <td className="px-3 py-4 text-center text-[14px]"></td>
                             </tr>
                         ))}
                     </tbody>

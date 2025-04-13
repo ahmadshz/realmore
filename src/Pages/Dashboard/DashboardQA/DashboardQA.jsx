@@ -7,7 +7,7 @@ import client from '../../../assets/IconAdmin/building.svg';
 import notification from '../../../assets/IconAdmin/notification.svg';
 import overview from '../../../assets/IconAdmin/overview.svg';
 
-const DashboardAdmin = () => {
+const DashboardQA = () => {
     const location = useLocation();
 
     // ✅ Check if current route includes 'dashboard' exactly at the end
@@ -18,9 +18,9 @@ const DashboardAdmin = () => {
             <SideBar
                 logo={logo}
                 pathDashboard='dashboard'
-                pathClientPage='clientPage'
+                pathClientPage='inventoryManagement'
                 pathClientPage2='clientPage/addClient'
-                pathClientPage3='clientPage'
+                pathClientPage3='inventoryManagement'
                 notification={notification}
                 iconCLient={client}
                 overview={overview}
@@ -37,4 +37,4 @@ const DashboardAdmin = () => {
     );
 };
 
-export default DashboardAdmin;
+export default DashboardQA;

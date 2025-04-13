@@ -6,7 +6,7 @@ import FormTextArea from "./FormTextArea";
 import FormButtons from "./FormButtons";
 import polygon from '../../../assets/Iconindividual/polygon.svg';
 
-const EventInformation = () => {
+const CallInformation = ({ bgButton ,color }) => {
     const [task, setTask] = useState({
         name: "",
         startDate: "",
@@ -44,21 +44,21 @@ const EventInformation = () => {
 
     return (
         <div className="flex ">
-            <div className="min-h-screen w-full ">
+            <div className=" w-full ">
                 <div className="flex items-center justify-between">
-                    <h2 className="text-[32px]">Task Information</h2>
+                    <h2 className="text-[32px]">Event Information</h2>
                     <OwnerInfo owner={task.owner} polygon={polygon} />
                 </div>
-                
+
                 <form onSubmit={handleSubmit} className="mt-4 space-y-4 flex flex-col gap-2">
-                    <FormInput 
+                    <FormInput
                         label="Task Name"
                         name="name"
                         value={task.name}
                         onChange={handleChange}
                         placeholder="Enter Task Name"
                     />
-                    
+
                     <div className="">
                         <label className="font-bold text-[14px]">Due Date</label>
                         <div className="flex items-center gap-4">
@@ -95,24 +95,24 @@ const EventInformation = () => {
                             />
                         </div>
                     </div>
-                    
-                    <CheckBoxWithLabel 
+
+                    <CheckBoxWithLabel
                         checked={task.repeat}
                         onChange={() => handleCheckboxChange('repeat')}
                         label="Repeat"
-                        color="#EE7A32"
-                        bg="#EFEFEF"
-                    />
-                    
-                    <CheckBoxWithLabel 
-                        checked={task.reminder}
-                        onChange={() => handleCheckboxChange('reminder')}
-                        label="Reminder"
-                        color="#EE7A32"
+                        color={color}
                         bg="#EFEFEF"
                     />
 
-                    <FormInput 
+                    <CheckBoxWithLabel
+                        checked={task.reminder}
+                        onChange={() => handleCheckboxChange('reminder')}
+                        label="Reminder"
+                        color={color}
+                        bg="#EFEFEF"
+                    />
+
+                    <FormInput
                         label="Location"
                         name="name"
                         value={task.name}
@@ -120,40 +120,39 @@ const EventInformation = () => {
                         placeholder="Enter Location"
                     />
 
-                    <CheckBoxWithLabel 
+                    <CheckBoxWithLabel
                         checked={task.repeat}
                         onChange={() => handleCheckboxChange('repeat')}
                         label="Online Meeting"
-                        color="#EE7A32"
+                        color={color}
                         bg="#EFEFEF"
                     />
-                    
-                    <FormInput 
+
+                    <FormInput
                         label="Related To"
                         name="relatedTo"
                         value={task.relatedTo}
                         onChange={handleChange}
                         placeholder="Search Contacts/Companies/Pipelines"
                     />
-                    <FormInput 
+                    <FormInput
                         label="Participants"
                         name="Participants"
                         value={task.relatedTo}
                         onChange={handleChange}
                         placeholder="Search Contacts, User or Invite People"
                     />
-                    
-                    <FormTextArea 
+
+                    <FormTextArea
                         label="Description"
                         name="description"
                         value={task.description}
                         onChange={handleChange}
                         placeholder="A few words about the task"
                     />
-                    
-                   
-                    
-                    <FormButtons 
+
+                    <FormButtons
+                        bgButton={bgButton}
                         onCancel={() => console.log("Cancelled")}
                         onSubmit={handleSubmit}
                     />
@@ -163,4 +162,4 @@ const EventInformation = () => {
     );
 };
 
-export default EventInformation;
+export default CallInformation;

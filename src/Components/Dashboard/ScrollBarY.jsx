@@ -9,7 +9,7 @@ const ScrollBarY = ({
     scrollBarColor = "#D3D3D3",
     gap = 8,
     hideNativeScrollbar = true,
-    scrollSpeed = 2 // Add scroll speed multiplier (default 2x faster)
+    scrollSpeed = 2 // Scroll speed multiplier
 }) => {
     const [scrollValue, setScrollValue] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
@@ -34,32 +34,32 @@ const ScrollBarY = ({
 
         return () => {
             resizeObserver.disconnect();
-            window.removeEventListener('resize', checkScrollable);
         };
     }, [children]);
 
-    const updateScrollValue = (clientX) => {
+    // Scroll to position based on mouse X
+    const updateScrollValue = (clientX, smooth = false) => {
         if (!scrollRef.current || !contentRef.current) return;
 
-        const scrollContainer = scrollRef.current;
-        const contentContainer = contentRef.current;
-        const rect = scrollContainer.getBoundingClientRect();
-
-        const scrollWidth = rect.width;
-        const offset = clientX - rect.left;
-
-        let percentage = offset / scrollWidth;
+        const rect = scrollRef.current.getBoundingClientRect();
+        let percentage = (clientX - rect.left) / rect.width;
         percentage = Math.max(0, Math.min(1, percentage));
         setScrollValue(percentage * 100);
 
-        const contentScrollWidth = contentContainer.scrollWidth - contentContainer.clientWidth;
-        contentContainer.scrollLeft = percentage * contentScrollWidth;
+        const content = contentRef.current;
+        const scrollTarget = percentage * (content.scrollWidth - content.clientWidth);
+
+        if (smooth) {
+            content.scrollTo({ left: scrollTarget, behavior: "smooth" });
+        } else {
+            content.scrollLeft = scrollTarget;
+        }
     };
 
     const handleMouseDown = (e) => {
         setIsDragging(true);
         updateScrollValue(e.clientX);
-        e.preventDefault(); // Prevent text selection during drag
+        e.preventDefault();
     };
 
     const handleTouchStart = (e) => {
@@ -69,32 +69,28 @@ const ScrollBarY = ({
 
     const handleContentScroll = () => {
         if (!contentRef.current) return;
-
         const { scrollLeft, scrollWidth, clientWidth } = contentRef.current;
         const scrollPercentage = (scrollLeft / (scrollWidth - clientWidth)) * 100;
         setScrollValue(scrollPercentage);
     };
 
-    // Add wheel event for faster scrolling
+    // Wheel scrolling
     useEffect(() => {
-        const contentContainer = contentRef.current;
-        if (!contentContainer) return;
+        const content = contentRef.current;
+        if (!content) return;
 
         const handleWheel = (e) => {
             if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                // Only prevent default if we're handling horizontal scroll
                 e.preventDefault();
-                contentContainer.scrollLeft += e.deltaY * scrollSpeed;
+                content.scrollLeft += e.deltaY * scrollSpeed;
             }
         };
 
-        contentContainer.addEventListener('wheel', handleWheel, { passive: false });
-
-        return () => {
-            contentContainer.removeEventListener('wheel', handleWheel);
-        };
+        content.addEventListener("wheel", handleWheel, { passive: false });
+        return () => content.removeEventListener("wheel", handleWheel);
     }, [scrollSpeed]);
 
+    // Handle drag
     useEffect(() => {
         const handleMove = (e) => {
             if (isDragging) {
@@ -108,9 +104,7 @@ const ScrollBarY = ({
             }
         };
 
-        const handleMouseUp = () => {
-            setIsDragging(false);
-        };
+        const handleMouseUp = () => setIsDragging(false);
 
         if (isDragging) {
             window.addEventListener("mousemove", handleMove);
@@ -135,37 +129,33 @@ const ScrollBarY = ({
             {/* Scrollable Content */}
             <div
                 ref={contentRef}
-                className="scrollbar-content"
+                className={`scrollbar-content ${scrollWidth}`}
                 style={{
-                    width: "100%",
-                    maxWidth: scrollWidth,
                     height,
                     overflowX: hideNativeScrollbar ? "hidden" : "auto",
                     display: "flex",
                     gap: `${gap}px`,
                     scrollBehavior: "smooth",
                     position: "relative",
+                    
                 }}
                 onScroll={handleContentScroll}
             >
                 {children}
             </div>
 
-            {/* Custom Horizontal Scrollbar */}
+            {/* Custom Scrollbar */}
             {isScrollable && (
                 <div
-                    className="custom-scrollbar"
+                    className={`"custom-scrollbar ${scrollWidth}`}
                     style={{
-                        width: scrollWidth,
                         height: `${scrollBarHeight}px`,
                         margin: `${scrollBarHeight}px auto 0`,
                         position: "relative",
                         cursor: "pointer"
                     }}
                     ref={scrollRef}
-                    onClick={(e) => {
-                        updateScrollValue(e.clientX);
-                    }}
+                    onClick={(e) => updateScrollValue(e.clientX, true)}
                 >
                     {/* Track */}
                     <div

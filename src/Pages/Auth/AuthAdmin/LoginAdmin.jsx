@@ -14,16 +14,15 @@ import RightSection from "../../../Components/Auth/RightSection";
 import logo from '../../../assets/IconAdmin/Logoside.svg'
 import logoHeader from '../../../assets/IconAdmin/LogoHeader.svg'
 
-const LoginAdmin = () => {
-  const firstTitle = "Hello, Welcome Bank Employee";
+const LoginAdmin = ({title}) => {
   const titleSeconde = "Manage your properties efficiently.";
-  const title = "Remember me";
+  const remember = "Remember me";
 
   // State for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state
-  const [error, setError] = useState(''); // Error state
+  const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState(''); 
 
   // Navigate
   const navigate = useNavigate();
@@ -48,17 +47,22 @@ const LoginAdmin = () => {
       });
 
       const { token, role } = response.data;
-
+      //
       if (token && role === "admin") {
         cookie.set('auth_token', token, { path: '/' });
         navigate('/admin/dashboard');
+      } else if (token && role === "qa") {
+        cookie.set('auth_token', token, { path: '/' })
+        navigate('/QA/dashboard');
+
       } else {
         setError('Unauthorized access. Only Admin role can log in.');
       }
+
     } catch (error) {
       setError('Invalid email or password. Please try again.', error.response ? error.response.data : error.message);
 
-      
+
     } finally {
       // Stop loading
       setLoading(false);
@@ -76,7 +80,7 @@ const LoginAdmin = () => {
 
           {/* Main Content */}
           <div className='w-full h-screen ml-[40px] gap-[60px] flex flex-col justify-center'>
-            <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} font={'font-bold'}  />
+            <HeaderSection titleSeconde={titleSeconde} firstTitle={title} font={'font-bold'} />
 
             {/* Input */}
             <form onSubmit={handleSubmit} className='flex flex-col gap-[32px]'>
@@ -99,7 +103,7 @@ const LoginAdmin = () => {
               <div className='flex flex-col gap-[12px]'>
                 <div className='flex justify-between lg:w-[470px] xl:w-[709px]'>
                   <div className='flex items-center gap-2'>
-                    <CheckBox color={'#050605'} bg={"#D3D3D3"} title={title} />
+                    <CheckBox color={'#050605'} bg={"#D3D3D3"} title={remember} />
                   </div>
                   <h1 className='text-[12px] text-[#858585]'>Forget Password?</h1>
                 </div>
@@ -108,7 +112,7 @@ const LoginAdmin = () => {
                 <Button
                   color={'#050605'}
                   type="submit"
-                  loading={loading} 
+                  loading={loading}
                 />
                 <div className='flex justify-between items-center lg:w-[470px] xl:w-[709px]'>
                   <h1 className='text-[14px] text-[#858585]'>Forget Password?</h1>

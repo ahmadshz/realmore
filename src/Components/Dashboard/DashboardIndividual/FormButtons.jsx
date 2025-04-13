@@ -1,4 +1,4 @@
-const FormButtons = ({ onCancel }) => {
+const FormButtons = ({ onCancel ,bgButton }) => {
     return (
         <div className="flex justify-center mt-6 gap-4">
             <button 
@@ -10,7 +10,7 @@ const FormButtons = ({ onCancel }) => {
             </button>
             <button 
                 type="submit" 
-                className="bg-[#EE7A32] w-[240px] h-[48px] text-white px-6 py-2 rounded-md text-[16px] font-bold"
+                className={` ${bgButton} w-[240px] h-[48px] text-white px-6 py-2 rounded-md text-[16px] font-bold`}
             >
                 Save
             </button>

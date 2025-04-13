@@ -1,117 +1,107 @@
 import React from "react";
-import add from '../../../assets/IconDashboard/addClient.svg'
 import phone from '../../../assets/iconRealEstate/phone.png'
-import circle from '../../../assets/iconRealEstate/circleBlack.png'
+import circle from '../../../assets/iconRealEstate/circleBlack.svg'
 import InfoCard from "../DashboardBank/InfoCard";
+import ScrollBarY from "../ScrollBarY";
+import ListProperties from "./ListProperties";
+import PropertiesType from "./PropertiesType";
 
-const ClientList = () => {
+const ClientList = ({ clients, add, bg, search, title, filterType, selected, setSelected, closedDeals, notes, mt, bgDeal, textColor }) => {
 
-    const clients = [
-        {
-            name: "Client Name",
-            phone: "05 123 456 78",
-            consultant: "Consultant Name",
-            mortgage: {
-                budget: "5,000,000",
-                loan: "1,000,000",
-            },
-            properties: [
-                { label: "Property City", value: "Jedda" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property City", value: "Jedda" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property District", value: "Albawadi" },
-            ],
-        },
-        {
-            name: "Client Name",
-            phone: "05 123 456 78",
-            consultant: "Consultant Name",
-            mortgage: {
-                budget: "5,000,000",
-                loan: "1,000,000",
-            },
-            properties: [
-                { label: "Property City", value: "Jedda" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property City", value: "Jedda" },
-                { label: "Property District", value: "Albawadi" },
-                { label: "Property District", value: "Albawadi" },
-            ],
-        },
-       
-    ];
     return (
-        <div className=" mt-[90px] mb-[20px] overflow-x-hidden">
+        <div className="   flex flex-col justify-center gap-[20px] mb-[60px]">
             {/* Header */}
-            <div className="flex justify-between items-center mb-5">
-                <h2 className="text-[22px] lg:text-[26px] font-bold">Clients</h2>
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        placeholder="  Search clients"
-                        className="hidden lg:block border px-3 py-2 rounded-md"
-                    />
-                    <button className="bg-black flex items-center justify-center text-white w-[124px] h-[28px] lg:h-auto rounded-[4px] text-[14px]  px-3 py-2 ">
-                        <img className="mr-1" src={add} alt='' />
-                        Add Client
-                    </button>
-                </div>
-            </div>
+            <ListProperties add={add} bg={bg} search={search} title={title} />
+
+            {filterType &&
+                <PropertiesType
+                    propertyTypes={['All Deals', 'Under reviewing', 'Closed']}
+                    bg={bg}
+                    selected={selected}
+                    setSelected={setSelected}
+                    mt={mt}
+                    justify={'justify-start'}
+                />
+            }
 
             {/* Clients Grid */}
-            <div className=" flex overflow-x-auto  gap-5 pb-4 ">
-                {clients.map((client, index) => (
-                    <div
-                        key={index}
-                        className="border rounded-[10px] w-full flex-shrink-0 md-flex-shrink 
-                                 md:w-[470px] lg:w-[470px] xl:w-[640px] p-5 shadow-sm bg-white" 
-                    >
-                        {/* Client Info */}
-                        <h3 className="text-[18px] font-bold">{client.name}</h3>
-                        <p className="text-[14px]  flex items-center ">
-                            <img className="mr-3" src={phone} alt='' />
-                            {client.phone}
-                        </p>
-                        <p className="mt-[14px] font-bold">
-                            Assigned Consultant:{" "}
-                            <span className="font-normal">
-                                {client.consultant ? client.consultant : "N/A"}
-                            </span>
-                            {!client.consultant && (
-                                <button className="ml-3 bg-black text-white px-3 py-1 rounded-md text-sm">
-                                    Assign
-                                </button>
-                            )}
-                        </p>
+            <ScrollBarY
+                width={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
+                scrollWidth={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
+                height="auto"
+                scrollBarHeight={2}
+                gap={12}
+                hideNativeScrollbar={true}
+                scrollSpeed={5}
+            >
+                <div className=" flex h-fit  gap-5 pb-4 ">
+                    {clients.map((client, index) => (
+                        <div
+                            key={index}
+                            className="border rounded-[10px]  flex-shrink-0 md-flex-shrink  p-5 shadow-sm bg-white
+                                       w-full max-w-[385px] lg:max-w-max md:w-[470px] lg:w-[470px] xl:w-[640px]"
+                        >
+                            {/* Client Info */}
+                            <div className="flex items-center justify-between">
+                                <h3 className="text-[18px] font-bold">{client.name}</h3>
+                                <div
+                                    className={`flex items-center mb-1 px-3 py-1 text-[10px] rounded-[16px] w-[134px] h-[18px] transition-opacity
+                                                duration-200 ${closedDeals ? `${bgDeal} ${textColor} opacity-100` : 'opacity-0'}`}
+                                >
+                                    ● Closed deal
+                                </div>
 
-                        {/* Mortgage Details */}
-                        <h4 className="mt-4 text-[12px] text-[#858585] mb-1 ">Mortgage Details</h4>
-                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full g:w-[430px]  xl:w-[600px] gap-[10px]">
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <p className="text-[14px]  flex items-center ">
+                                    <img className="mr-3" src={phone} alt='' />
+                                    {client.phone}
+                                </p>
+                                {notes &&
+                                    <div className={`flex lg:hidden items-center  mb-1 px-3 py-1 text-[10px] rounded-[16px] w-[134px] h-[18px] bg-[#F6F6F6]  `}>
+                                        ● Notes
+                                    </div>}
+                            </div>
+                            <div className="hidden lg:flex items-center justify-between">
+                                <p className="mt-[14px] font-bold">
+                                    Assigned Consultant:{" "}
+                                    <span className="font-normal">
+                                        {client.consultant ? client.consultant : "N/A"}
+                                    </span>
+                                    {!client.consultant && (
+                                        <button className="ml-3 bg-black text-white px-3 py-1 rounded-md text-sm">
+                                            Assign
+                                        </button>
+                                    )}
+                                </p>
+                                {notes &&
+                                    <div className={`flex items-center  mb-1 px-3 py-1 text-[10px] rounded-[16px] w-[134px] h-[18px] bg-[#F6F6F6]  `}>
+                                        ● Notes
+                                    </div>}
+                            </div>
+
+                            {/* Mortgage Details */}
+                            <h4 className="mt-4 text-[12px] text-[#858585] mb-1 ">Mortgage Details</h4>
+                            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full g:w-[430px]  xl:w-[600px] gap-[10px]">
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                            </div>
+
+                            {/* Property Details */}
+                            <h4 className="mt-4 text-[12px] text-[#858585] mb-1 ">Property Details</h4>
+                            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   w-full lg:w-[430px]  xl:w-[600px]  gap-[10px]">
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                                <InfoCard icon={circle} title={'Property District'} value={'Albawadi'} />
+                            </div>
                         </div>
-
-
-                        {/* Property Details */}
-                        <h4 className="mt-4 text-[12px] text-[#858585] mb-1 ">Property Details</h4>
-                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   w-full lg:w-[430px]  xl:w-[600px]  gap-[10px]">
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                       
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                            <InfoCard  icon={circle} title={'Property District'} value={'Albawadi'} />
-                           
-                        </div>
-
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </ScrollBarY>
         </div>
     );
 };

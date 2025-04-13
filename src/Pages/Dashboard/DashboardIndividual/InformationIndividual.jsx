@@ -24,7 +24,7 @@ const InformationIndividual = () => {
                     <Progress />
                     <ProgressStats />
                     <div className='px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] p-2'>
-                        <ProgressChart />
+                        <ProgressChart stroke={'#8c604539'} />
                     </div>
                 </div>
             </div>

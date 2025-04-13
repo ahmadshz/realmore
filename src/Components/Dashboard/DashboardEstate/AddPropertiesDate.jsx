@@ -4,13 +4,11 @@ import { baseUrl } from "../../../Api/Api";
 import Cookies from "universal-cookie";
 
 const AddPropertiesDate = () => {
-    // State for storing image URLs
     const [images, setImages] = useState([]);
 
-    const cookies = new Cookies()
-    const token = cookies.get('auth_token')
-    
-    // State for form data fields
+    const cookies = new Cookies();
+    const token = cookies.get("auth_token");
+
     const [formData, setFormData] = useState({
         price: "",
         city: "",
@@ -23,63 +21,64 @@ const AddPropertiesDate = () => {
         description: "",
     });
 
-    // Handle image selection and preview
-    const handleImageChange = (event) => {
-        const files = Array.from(event.target.files);
-        const newImages = files.map((file) => URL.createObjectURL(file));
-        setImages([...images, ...newImages]);
+    //     images,
+    //     price,
+    //     city,
+    //     direction,
+    //     district,
+    //     area,
+    //     buildType,
+    //     bedrooms,
+    //     type,
+    // description,
+
+    // Add image URL instead of file
+    const handleAddImageLink = () => {
+        const url = prompt("Enter Image URL (e.g., https://picsum.photos/id/237/200/300)");
+        if (url) {
+            setImages([...images, url]);
+        }
     };
 
-    // Remove an image from the preview list
     const removeImage = (index) => {
         setImages(images.filter((_, i) => i !== index));
     };
 
-    // Handle text input changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formDataToSend = new FormData();
 
-        // Append all text fields to the FormData object
         Object.keys(formData).forEach((key) => {
             formDataToSend.append(key, formData[key]);
         });
 
-        // Convert image URLs to files and append them
-        for (let i = 0; i < images.length; i++) {
-            const response = await fetch(images[i]);
-            const blob = await response.blob();
-            formDataToSend.append("https://picsum.photos/id/237/200/300", blob, );
-        }
+        // Append image URLs
+        images.forEach((url) => {
+            formDataToSend.append("imageUrls[]", url); // Adjust key if your backend needs a different one
+        });
 
         try {
-            // Send POST request with form data
             const response = await axios.post(`${baseUrl}/property/add-property`, formDataToSend, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
             console.log("Property added successfully:", response.data);
-            // Handle success (e.g., clear form, show success message)
         } catch (error) {
             console.error("Error adding property:", error);
-            // Handle error (e.g., show error message)
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white mx-[15px] lg:mx-0 ">
-            {/* Image Upload Section */}
+        <form onSubmit={handleSubmit} className="bg-white mx-[15px] lg:mx-0">
             <div className="flex flex-col xl:flex-row gap-6">
-                {/* Left side - Image Preview */}
                 <div className="xl:w-[40%] bg-gray-100 rounded-lg flex justify-center items-center min-h-[300px]">
                     {images.length > 0 ? (
                         <img
@@ -92,15 +91,15 @@ const AddPropertiesDate = () => {
                     )}
                 </div>
 
-                {/* Right side - Upload Controls */}
                 <div className="xl:w-[60%] flex flex-col gap-2 mb-5">
-                    {/* Drop/Select Image Area */}
-                    <label className="border border-[#D3D3D3] h-[54px] lg:h-[156px] p-4 text-center rounded-[10px] cursor-pointer flex justify-center items-center text-[#858585]">
-                        <input type="file" multiple onChange={handleImageChange} className="hidden" />
-                        Select or drop image
-                    </label>
+                    <button
+                        type="button"
+                        onClick={handleAddImageLink}
+                        className="border border-[#D3D3D3] h-[54px] lg:h-[156px] p-4 text-center rounded-[10px] cursor-pointer flex justify-center items-center text-[#858585]"
+                    >
+                        Add Image Link
+                    </button>
 
-                    {/* Upload Button */}
                     <div className="border border-[#D3D3D3] h-[65px] rounded-[10px] p-3 flex justify-between items-center">
                         <span className="text-[#858585]">Images</span>
                         <button
@@ -111,7 +110,6 @@ const AddPropertiesDate = () => {
                         </button>
                     </div>
 
-                    {/* Thumbnail Previews */}
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-[16px]">
                         {images.map((image, index) => (
                             <div key={index} className="relative aspect-square">
@@ -133,7 +131,6 @@ const AddPropertiesDate = () => {
                 </div>
             </div>
 
-            {/* Input Fields */}
             <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-[24px] mt-[16px] lg:mt-[24px]">
                 <input type="text" name="price" value={formData.price} onChange={handleChange} placeholder="Property Price"
                     className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
@@ -160,11 +157,9 @@ const AddPropertiesDate = () => {
                     className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
             </div>
 
-            {/* Description */}
             <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description"
                 className="border p-2 border-[#D3D3D3] rounded-[10px] w-full mt-5 h-[122px] lg:h-[220px] focus:border-[#714E95] focus:outline-none focus:border-2"></textarea>
 
-            {/* Submit Button */}
             <button type="submit" className="bg-[#714E95] text-white px-6 h-[50px] rounded-[10px] text-[22px] font-bold mt-4 w-full">
                 Submit
             </button>

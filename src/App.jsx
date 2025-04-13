@@ -25,6 +25,13 @@ import AddIndividual from './Pages/Dashboard/DashboardIndividual/AddIndividual'
 import LoginAdmin from './Pages/Auth/AuthAdmin/LoginAdmin'
 import DashboardAdmin from './Pages/Dashboard/DashboardAdmin/DashboardAdmin'
 import InformationAdmin from './Pages/Dashboard/DashboardAdmin/InformationAdmin'
+import ClientPageAdmin from './Pages/Dashboard/DashboardAdmin/ClientPageAdmin'
+import InventoryManagement from './Pages/Dashboard/DashboardAdmin/InventoryManagement'
+import PageAdmin from './Pages/Dashboard/DashboardAdmin/PageAdmin'
+import TasksAdmin from './Pages/Dashboard/DashboardAdmin/TasksAdmin'
+import OverviewAdmin from './Pages/Dashboard/DashboardAdmin/OverviewAdmin'
+import DashboardQA from './Pages/Dashboard/DashboardQA/DashboardQA'
+import OverviewQA from './Pages/Dashboard/DashboardQA/OverviewQA'
 
 const App = () => {
   return (
@@ -46,7 +53,10 @@ const App = () => {
         <Route path='/registerIndividual' element={<RegisterIndividual />} />\
 
         {/* Auth Admin */}
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/loginQA" element={<LoginAdmin title='Hello, Welcome Quality Assurance' />} />
+
+        {/* Auth Admin */}
+        <Route path="/loginAdmin" element={<LoginAdmin  title='Hello, Welcome Admin' />} />
 
 
         {/* Dashboard Bank Employee */}
@@ -72,9 +82,23 @@ const App = () => {
           <Route path="overview" element={<OverViewIndividual />} />
         </Route>
 
+        {/* Dashboard QA */}
+        <Route path="/QA" element={<DashboardQA />} >
+          <Route path="dashboard" element={<ClientPageAdmin title='Hello, Welcome Quality Assurance' />} />
+          <Route path="inventoryManagement" element={<InventoryManagement />} />
+          <Route path="tasksQA" element={<TasksAdmin />} />
+          <Route path="overview" element={<OverviewQA />} />
+      
+        </Route>
+
         {/* Dashboard Admin */}
         <Route path="/admin" element={<DashboardAdmin />} >
           <Route path="dashboard" element={<InformationAdmin />} />
+          <Route path="clientPage" element={<ClientPageAdmin title={'Hello, Welcome Admin'} />} />
+          <Route path="inventoryManagement" element={<InventoryManagement />} />
+          <Route path="pageAdmin" element={<PageAdmin />} />
+          <Route path="tasksAdmin" element={<TasksAdmin />} />
+          <Route path="overview" element={<OverviewAdmin />} />
       
         </Route>
 

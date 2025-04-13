@@ -7,6 +7,7 @@ import TaskNavigation from '../../../Components/Dashboard/DashboardIndividual/Ta
 import EventInformation from '../../../Components/Dashboard/DashboardIndividual/EventInformation'
 import Table from '../../../Components/Dashboard/DashboardIndividual/Table'
 import TrackTasck from '../../../Components/Dashboard/DashboardIndividual/TrackTasck'
+import CallInformation from '../../../Components/Dashboard/DashboardIndividual/CallInformation'
 
 const AddIndividual = () => {
     const [selected, setSelected] = useState("Task Tracker");
@@ -24,7 +25,14 @@ const AddIndividual = () => {
             <PropertiesType selected={selected} setSelected={setSelected} propertyTypes={propertyTypes} bg={'bg-[#EA9B23]'} />
             <TaskNavigation activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
             {
-                activeIndex === 0 ? <Table /> : activeIndex === 1 ? <TaskInformation /> : activeIndex === 2 ? <EventInformation /> : ""
+                activeIndex === 0 ?
+                    <Table bg={'bg-[#EA9B23]'} /> :
+                    activeIndex === 1 ?
+                        <TaskInformation bgButton={'bg-[#EE7A32]'} color={'#EE7A32'} /> :
+                        activeIndex === 2 ?
+                            <CallInformation bgButton={'bg-[#EE7A32]'} color={'#EE7A32'} /> :
+                            activeIndex === 3 &&
+                            <EventInformation bgButton={'bg-[#EE7A32]'} color={'#EE7A32'} />
             }
             <TrackTasck />
         </div>
