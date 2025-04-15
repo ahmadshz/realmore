@@ -33,7 +33,7 @@ const Landing = () => {
                 loginRealEstate
             </Link>
             <br />
-            <Link className='text-3xl text-red-400' to={'/realEstate'}>
+            <Link className='text-3xl text-red-400' to={'/realEstate/dashboard'}>
                 Real Estate Dashboard
             </Link>
             <br />

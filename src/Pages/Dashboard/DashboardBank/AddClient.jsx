@@ -1,6 +1,7 @@
 import React from 'react'
 import HeaderSection from '../../../Components/Auth/HeaderSection'
 import notification from '../../../assets/IconDashboard/notification.png'
+import logo from '../../../assets/IconDashboard/logoMobile.png'
 import FormAddClient from '../../../Components/Dashboard/DashboardBank/FormAddClient'
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard'
 
@@ -11,12 +12,12 @@ const AddClient = () => {
 
     return (
         <div>
-            <HeaderDashboard />
+        <HeaderDashboard logo={logo} notification={notification} />
 
             <div className='min-h-screen flex flex-col   xl:w-[850px] 2xl:w-[1217px] 
-                            pt-[55px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] '>
-                <div className='hidden lg:flex justify-between items-center'>
-                    <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} />
+                            pt-[50px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] '>
+                <div className=' flex justify-between items-center'>
+                    <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} font={'font-bold'} />
                     <div className='relative'>
                         <img src={notification} alt='' />
                         <span className='absolute top-[-3px] right-[-2px] w-[12px] h-[12px] bg-white

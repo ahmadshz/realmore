@@ -123,8 +123,7 @@ const ScrollBarY = ({
 
     return (
         <div
-            className="scrollbar-list-container"
-            style={{ width }}
+            className={`"scrollbar-list-container ${width}`}
         >
             {/* Scrollable Content */}
             <div

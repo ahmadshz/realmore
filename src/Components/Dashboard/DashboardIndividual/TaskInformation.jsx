@@ -1,57 +1,81 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
 import CheckBoxWithLabel from "./CheckBoxWithLabel";
 import OwnerInfo from "./OwnerInfo";
 import FormInput from "./FormInput";
 import FormTextArea from "./FormTextArea";
 import FormButtons from "./FormButtons";
-import polygon from '../../../assets/Iconindividual/polygon.svg';
+import polygon from "../../../assets/Iconindividual/polygon.svg";
+import { baseUrl } from "../../../Api/Api";
 
-const TaskInformation = ({ bgButton , color }) => {
+const cookies = new Cookies();
+
+const TaskInformation = ({ bgButton, color }) => {
     const [task, setTask] = useState({
-        name: "",
+        taskName: "",
         dueDate: "",
-        repeat: false,
-        reminder: false,
+        type: "", // 'Repeat' or 'Reminder'
         relatedTo: "",
         description: "",
-        highPriority: false,
+        priority: false,
         completed: false,
-        owner: "User Name",
+        owner: "",
     });
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        setTask(prev => ({
+        setTask((prev) => ({
             ...prev,
             [name]: type === "checkbox" ? checked : value,
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Task Data:", task);
+    const handleCheckboxChange = (field) => {
+        setTask((prev) => ({
+            ...prev,
+            [field]: !prev[field],
+        }));
     };
 
-    const handleCheckboxChange = (field) => {
-        setTask(prev => ({
+    const handleOwnerChange = (newOwner) => {
+        setTask((prev) => ({
             ...prev,
-            [field]: !prev[field]
+            owner: newOwner,
         }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const token = cookies.get("token");
+
+            const response = await axios.post(`${baseUrl}/activity/task`, task, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+
+            console.log("Task submitted successfully:", response.data);
+        } catch (error) {
+            console.error("Error submitting task:", error.response || error.message);
+        }
     };
 
     return (
         <div className="flex justify-center">
-            <div className="w-full   ">
+            <div className="w-full">
                 <div className="flex items-center justify-between mb-10">
                     <h2 className="text-[32px]">Task Information</h2>
-                    <OwnerInfo owner={task.owner} polygon={polygon} />
+                    <OwnerInfo owner={task.owner} polygon={polygon} onChange={handleOwnerChange} />
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-6">
                     <FormInput
                         label="Task Name"
-                        name="name"
-                        value={task.name}
+                        name="taskName"
+                        value={task.taskName}
                         onChange={handleChange}
                         placeholder="Enter Task Name"
                     />
@@ -66,16 +90,16 @@ const TaskInformation = ({ bgButton , color }) => {
                     />
 
                     <CheckBoxWithLabel
-                        checked={task.repeat}
-                        onChange={() => handleCheckboxChange('repeat')}
+                        checked={task.type === "Repeat"} // Checking if 'Repeat' is selected
+                        onChange={() => setTask((prev) => ({ ...prev, type: "Repeat" }))}
                         label="Repeat"
                         color={color}
                         bg="#D3D3D3"
                     />
 
                     <CheckBoxWithLabel
-                        checked={task.reminder}
-                        onChange={() => handleCheckboxChange('reminder')}
+                        checked={task.type === "Reminder"} // Checking if 'Reminder' is selected
+                        onChange={() => setTask((prev) => ({ ...prev, type: "Reminder" }))}
                         label="Reminder"
                         color={color}
                         bg="#D3D3D3"
@@ -98,8 +122,8 @@ const TaskInformation = ({ bgButton , color }) => {
                     />
 
                     <CheckBoxWithLabel
-                        checked={task.highPriority}
-                        onChange={() => handleCheckboxChange('highPriority')}
+                        checked={task.priority}
+                        onChange={() => handleCheckboxChange("priority")}
                         label="Mark as High Priority"
                         color={color}
                         bg="#D3D3D3"
@@ -107,7 +131,7 @@ const TaskInformation = ({ bgButton , color }) => {
 
                     <CheckBoxWithLabel
                         checked={task.completed}
-                        onChange={() => handleCheckboxChange('completed')}
+                        onChange={() => handleCheckboxChange("completed")}
                         label="Mark as Completed"
                         color={color}
                         bg="#D3D3D3"

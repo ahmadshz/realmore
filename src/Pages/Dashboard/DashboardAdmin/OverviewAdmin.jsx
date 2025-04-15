@@ -1,16 +1,10 @@
 import React from 'react'
-// Importing assets for the logo and notification icon
 import header from '../../../assets/IconAdmin/LogoHeader.svg'
 import notification from '../../../assets/IconAdmin/notification.svg'
-
-// Importing components used in the page
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard'
 import HeaderSection from '../../../Components/Auth/HeaderSection'
-import FilterDate from '../../../Components/Dashboard/DashboardAdmin/FilterDate'
-import MetricCard from '../../../Components/Dashboard/DashboardBank/MetricCard'
 import PerformanceMetrics from '../../../Components/Dashboard/DashboardAdmin/PerformanceMetrics'
 import SysPerfMetrics from '../../../Components/Dashboard/DashboardAdmin/SysPerfMetrics'
-import ProgressChart from '../../../Components/Dashboard/DashboardIndividual/ProgressChart'
 import ProgressChartAdmin from '../../../Components/Dashboard/DashboardAdmin/ProgressChartAdmin'
 import UserRatingsChart from '../../../Components/Dashboard/DashboardAdmin/UserRatingsChart'
 import RevenueDistributionChart from '../../../Components/Dashboard/DashboardAdmin/RevenueDistributionChart '
@@ -27,7 +21,7 @@ const OverviewAdmin = () => {
                 px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px]'>
 
                 {/* Section displaying the main heading and subtitle */}
-                <div className='p-[10px] pb-0 lg:p-0'>
+                <div className='px-[10px] pb-0 lg:px-0'>
                     <HeaderSection
                         titleSeconde={'Quick snapshot of important data points.'}
                         firstTitle={'Analytics & Performance'}
@@ -35,9 +29,9 @@ const OverviewAdmin = () => {
                     />
                 </div>
                 {/* Filter date section */}
-                <div className='xl:border border-[#D3D3D3] rounded-[10px] xl:p-[40px] pt-0 mt-[40px] lg:mt-[60px] '>
+                <div className='xl:border border-[#D3D3D3] rounded-[10px] xl:pt-0 xl:p-[40px] pt-0 mt-[40px] lg:mt-[60px] p-[10px] pb-0 lg:p-0 '>
                     <ApplyFilter filters={["Apartment", "House", "Commercial"]}
-                        className bg={'bg-black '} />
+                        className bg={'bg-black'} />
                 </div>
                 {/* Displaying performance metrics section */}
                 <PerformanceMetrics  className='flex flex-col gap-[12px] lg:gap-[24px] lg:border-b pt-[40px] lg:py-[60px] 2xl:px-[60px]' />
@@ -46,7 +40,7 @@ const OverviewAdmin = () => {
                 <div className=' py-[40px] lg:py-[60px] 2xl:p-[60px] flex flex-col gap-[60px]'>
 
                     {/* Grid container for progress and user ratings charts */}
-                    <div className='grid xl:grid-cols-2 gap-[20px] 2xl:gap-[40px]'>
+                    <div className='grid grid-cols-1 xl:grid-cols-2 gap-[20px] 2xl:gap-[40px] '>
                         <ProgressChartAdmin title={'Response Times'} x={'Time'} y={'Response'} />
                         <UserRatingsChart />
                     </div>

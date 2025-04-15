@@ -5,7 +5,6 @@ import Cookies from "universal-cookie";
 
 const AddPropertiesDate = () => {
     const [images, setImages] = useState([]);
-
     const cookies = new Cookies();
     const token = cookies.get("auth_token");
 
@@ -21,18 +20,6 @@ const AddPropertiesDate = () => {
         description: "",
     });
 
-    //     images,
-    //     price,
-    //     city,
-    //     direction,
-    //     district,
-    //     area,
-    //     buildType,
-    //     bedrooms,
-    //     type,
-    // description,
-
-    // Add image URL instead of file
     const handleAddImageLink = () => {
         const url = prompt("Enter Image URL (e.g., https://picsum.photos/id/237/200/300)");
         if (url) {
@@ -50,31 +37,37 @@ const AddPropertiesDate = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const formDataToSend = new FormData();
-
-        Object.keys(formData).forEach((key) => {
-            formDataToSend.append(key, formData[key]);
-        });
-
-        // Append image URLs
-        images.forEach((url) => {
-            formDataToSend.append("imageUrls[]", url); // Adjust key if your backend needs a different one
-        });
-
+    
+        // Required field check
+        if (!formData.price.trim() || !formData.city.trim() || !formData.area.trim()) {
+            alert("Price, City, and Area are required fields.");
+            return;
+        }
+    
+        // Create a plain object with non-empty values
+        const dataToSend = {
+            ...Object.fromEntries(
+                Object.entries(formData).filter(([_, value]) => value.trim() !== "")
+            ),
+            imageUrls: images, // include image URLs array
+        };
+    
         try {
-            const response = await axios.post(`${baseUrl}/property/add-property`, formDataToSend, {
+            const response = await axios.post(`${baseUrl}/property/add-property`, dataToSend, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
                 },
             });
-
+    
             console.log("Property added successfully:", response.data);
+            alert("Property added successfully");
         } catch (error) {
-            console.error("Error adding property:", error);
+            console.error("Error adding property:", error?.response?.data || error);
+            alert("Error adding property");
         }
     };
+    
 
     return (
         <form onSubmit={handleSubmit} className="bg-white mx-[15px] lg:mx-0">
@@ -132,35 +125,40 @@ const AddPropertiesDate = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-[24px] mt-[16px] lg:mt-[24px]">
-                <input type="text" name="price" value={formData.price} onChange={handleChange} placeholder="Property Price"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Property City"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="direction" value={formData.direction} onChange={handleChange} placeholder="Property Direction"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="district" value={formData.district} onChange={handleChange} placeholder="Property District"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="area" value={formData.area} onChange={handleChange} placeholder="Property Area"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="buildType" value={formData.buildType} onChange={handleChange} placeholder="Property Build Type"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="bedrooms" value={formData.bedrooms} onChange={handleChange} placeholder="Property Bedrooms"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
-
-                <input type="text" name="type" value={formData.type} onChange={handleChange} placeholder="Property Type"
-                    className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]" />
+                {[
+                    { name: "price", placeholder: "Property Price" },
+                    { name: "city", placeholder: "Property City" },
+                    { name: "direction", placeholder: "Property Direction" },
+                    { name: "district", placeholder: "Property District" },
+                    { name: "area", placeholder: "Property Area" },
+                    { name: "buildType", placeholder: "Property Build Type" },
+                    { name: "bedrooms", placeholder: "Property Bedrooms" },
+                    { name: "type", placeholder: "Property Type" },
+                ].map(({ name, placeholder }) => (
+                    <input
+                        key={name}
+                        type="text"
+                        name={name}
+                        value={formData[name]}
+                        onChange={handleChange}
+                        placeholder={placeholder}
+                        className="border h-[50px] p-2 rounded-[10px] focus:border-[#714E95] focus:outline-none focus:border-2 border-[#D3D3D3]"
+                    />
+                ))}
             </div>
 
-            <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description"
-                className="border p-2 border-[#D3D3D3] rounded-[10px] w-full mt-5 h-[122px] lg:h-[220px] focus:border-[#714E95] focus:outline-none focus:border-2"></textarea>
+            <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                placeholder="Description"
+                className="border p-2 border-[#D3D3D3] rounded-[10px] w-full mt-5 h-[122px] lg:h-[220px] focus:border-[#714E95] focus:outline-none focus:border-2"
+            ></textarea>
 
-            <button type="submit" className="bg-[#714E95] text-white px-6 h-[50px] rounded-[10px] text-[22px] font-bold mt-4 w-full">
+            <button
+                type="submit"
+                className="bg-[#714E95] text-white px-6 h-[50px] rounded-[10px] text-[22px] font-bold mt-4 w-full"
+            >
                 Submit
             </button>
         </form>

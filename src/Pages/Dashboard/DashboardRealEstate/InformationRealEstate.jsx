@@ -272,13 +272,13 @@ const InformationRealEstate = () => {
                 {/* Scrollable Property Cards based on selected type */}
                 <div className='flex items-center  lg:h-[700px] gap-4 mt-[32px] '>
                     <ScrollBarY
-                    width={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
-                    scrollWidth={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
-                    height="auto"
-                    scrollBarHeight={2}
-                    gap={12}
-                    hideNativeScrollbar={true}
-                    scrollSpeed={5}
+                        width={" w-full xl:w-[765px] 2xl:w-[1080px]"}
+                        scrollWidth={" w-[99%] xl:w-[765px] 2xl:w-[1080px]"}
+                        height="auto"
+                        scrollBarHeight={2}
+                        gap={12}
+                        hideNativeScrollbar={true}
+                        scrollSpeed={5}
                     >
                         {filteredProperties.length > 0 ? (
                             filteredProperties.map((item, index) => (

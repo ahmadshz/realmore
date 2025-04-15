@@ -25,7 +25,7 @@ const ExportControls = ({bg ,border , textColor  ,mt}) => {
 
                         <div className='flex flex-col lg:flex-row lg:items-center justify-between xl:justify-end w-full
                                      gap-[10px] 2xl:gap-[24px] 2xl:w-3/6   '>
-                            <h1 className='text-[20px] font-bold '>Date Range</h1>
+                            <h1 className='text-[15px] lg:text-[20px] font-bold '>Date Range</h1>
                             <div className='flex  gap-[10px]'>
                                 <div className='bg-[#F3F2F7] rounded-[6px] min-w-[90px] px-[10px]  h-[40px] flex justify-center items-center text-[14px] '>Last 7 days</div>
                                 <div className='bg-[#F3F2F7] rounded-[6px] min-w-[98px] px-[10px] h-[40px] flex justify-center items-center text-[14px] '>Last 30 days</div>

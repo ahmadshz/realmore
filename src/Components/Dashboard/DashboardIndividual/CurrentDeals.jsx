@@ -88,8 +88,9 @@ const CurrentDeals = () => {
 
                     {/* Scrollable Property Cards */}
                     <ScrollBarY
-                        width="auto"  // Container takes available space
-                        scrollWidth="655px"  // Scrollable area limited to 600px
+                        scrollWidth={"w-[655px]"}  // Scrollable area limited to 600px
+                        widteh={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
+                        scrollWideth={" w-[385px] xl:w-[765px] 2xl:w-[1080px]"}
                         height="auto"
                         scrollBarHeight={2}
                         gap={12}

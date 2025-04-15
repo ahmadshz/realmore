@@ -56,9 +56,10 @@ const ClientPageAdmin = ({title}) => {
             <div className='min-h-screen w-full xl:w-[850px] 2xl:w-[1205px] pt-[50px] lg:pt-[97px]  mb-10 overflow-x-hidden
                         px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px]'>
                 <HeaderSection firstTitle={title} titleSeconde={titleSeconde} font='font-bold' notification={notification} />
-                <ClientList clients={clients} title="Clients" add="Add Client" search="Search clients" bg={'bg-black'} />
+                <ClientList clients={clients} title="Clients" add="Add Client" search="Search clients" bg={'bg-black'} mb />
                 <ClientList
                     mt={'mt-0'}
+                    mb
                     clients={clients}
                     add="Add Deals"
                     bg={'bg-black'}
@@ -74,6 +75,7 @@ const ClientPageAdmin = ({title}) => {
                 />
                 <ClientList
                     mt={'mt-0'}
+                    mb
                     clients={clients}
                     add="Add Consultant"
                     bg={'bg-black'}

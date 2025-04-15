@@ -1,5 +1,5 @@
 import React from 'react';
-import search from '../../../assets/IconDashboard/ic-search.png';
+import search from '../../../assets/IconDashboard/ic-search.svg';
 import ClosedDeals from './ClosedDeals';
 import Information from '../../Pages/Information';
 import about from '../../../assets/icons/aboutus.png';
