@@ -1,5 +1,5 @@
 import React from "react";
-import circle from '../../../assets/IconDashboard/Ellipse.png'
+import circle from '../../../assets/IconDashboard/Ellipse.svg'
 
 const ConsultantCard = ({ name, date, score }) => {
     return (

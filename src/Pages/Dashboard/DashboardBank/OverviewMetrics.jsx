@@ -1,11 +1,10 @@
 import React from 'react'
 import HeaderSection from '../../../Components/Auth/HeaderSection';
 import MetricCard from '../../../Components/Dashboard/DashboardBank/MetricCard';
-import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard';
 import Progress from '../../../Components/Dashboard/DashboardBank/Progress';
 import CustomBarChar from '../../../Components/Dashboard/DashboardBank/CustomBarChar';
-import add from '../../../assets/IconDashboard/added.png'
-import arrow from '../../../assets/IconDashboard/arrow-2.png'
+import add from '../../../assets/IconDashboard/added.svg'
+import arrow from '../../../assets/IconDashboard/arrow-2.svg'
 import Overview from './Overview';
 
 const OverviewMetrics = () => {
@@ -16,7 +15,7 @@ const OverviewMetrics = () => {
         <div>
          <Overview/>
             <div className='min-h-screen w-f flex flex-col xl:w-[850px] 2xl:w-[1217px]
-            pt-[55px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px]'>
+    px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px]'>
                 <div className='hidden lg:block'>
                     <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} />
                 </div>

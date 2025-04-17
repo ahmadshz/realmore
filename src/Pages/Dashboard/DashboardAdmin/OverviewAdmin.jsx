@@ -29,7 +29,7 @@ const OverviewAdmin = () => {
                     />
                 </div>
                 {/* Filter date section */}
-                <div className='xl:border border-[#D3D3D3] rounded-[10px] xl:pt-0 xl:p-[40px] pt-0 mt-[40px] lg:mt-[60px] p-[10px] pb-0 lg:p-0 '>
+                <div className='xl:border border-[#D3D3D3] rounded-[10px] xl:pt-0 xl:p-[40px] pt-0  lg:mt-[60px] px-[10px] pb-0 lg:px-0 '>
                     <ApplyFilter filters={["Apartment", "House", "Commercial"]}
                         className bg={'bg-black'} />
                 </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import arrow from '../../../assets/IconDashboard/arrowRight.png';
+import arrow from '../../../assets/IconDashboard/arrowRight.svg';
 
 const ClosedDeals = () => {
     return (

@@ -18,11 +18,12 @@ const ClientList = ({
     closedDeals,
     notes,
     mt,
+    mb,
     bgDeal,
     textColor
 }) => {
     return (
-        <div className="flex flex-col justify-center gap-[20px] mb-[60px]">
+        <div className={`"flex flex-col justify-center gap-[20px]  ${mb ? "m-[10px]" : "mb-[60px]"} `}>
             {/* Header */}
             <ListProperties add={add} bg={bg} search={search} title={title} />
 
@@ -38,9 +39,9 @@ const ClientList = ({
             )}
 
             {/* Clients Grid */}
-            <div className="flex h-fit gap-5 pb-4">
+            <div className="flex h-fit gap-5 py-4">
                 <ScrollBarY
-                    width="flex-shrink-0 w-full   xl:w-[765px] 2xl:w-[1080px]"
+                    width="flex-shrink-0 w-full  xl:w-[765px] 2xl:w-[1080px]"
                     scrollWidth="w-full xl:w-[765px] 2xl:w-[1080px]"
                     height="auto"
                     scrollBarHeight={2}

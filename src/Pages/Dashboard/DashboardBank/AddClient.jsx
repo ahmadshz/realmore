@@ -1,7 +1,7 @@
 import React from 'react'
 import HeaderSection from '../../../Components/Auth/HeaderSection'
 import notification from '../../../assets/IconDashboard/notification.png'
-import logo from '../../../assets/IconDashboard/logoMobile.png'
+import logo from '../../../assets/IconDashboard/Logo.svg'
 import FormAddClient from '../../../Components/Dashboard/DashboardBank/FormAddClient'
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard'
 

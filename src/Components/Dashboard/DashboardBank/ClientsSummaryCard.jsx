@@ -1,9 +1,9 @@
 import React from 'react'
 import InfoCard from './InfoCard'
-import circle from '../../../assets/IconDashboard/circle.png'
-import diagram from '../../../assets/IconDashboard/diagram.png'
-import location from '../../../assets/IconDashboard/location.png'
-import map from '../../../assets/IconDashboard/map.png'
+import circle from '../../../assets/IconDashboard/circle.svg'
+import diagram from '../../../assets/IconDashboard/diagram.svg'
+import location from '../../../assets/IconDashboard/location.svg'
+import map from '../../../assets/IconDashboard/map.svg'
 
 const ClientsSummaryCard = ({name ,budget ,amount ,city}) => {
     return (
@@ -15,7 +15,7 @@ const ClientsSummaryCard = ({name ,budget ,amount ,city}) => {
                         <h1 className='text-[12px] text-[#858585] '>Mortgage Details</h1>
                         <div className='flex items-center gap-2 '>
                             <InfoCard icon={circle} title={'Budget'} value={budget } currency={'SAR'} />
-                            <InfoCard icon={diagram} title={'Loan Amount'} value={amount } currency={'SAR'} />
+                            <InfoCard icon={diagram} title={'Loan Amount'} value={amount} currency={'SAR'} />
                         </div>
                     </div>
                     <div className='flex flex-col gap-[8px]'>

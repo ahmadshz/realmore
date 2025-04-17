@@ -106,7 +106,7 @@ const SideBar = ({
 
                                 {/* Submenu Section */}
                                 {link.path2 && isParentActive && (
-                                    <div className="pl-[20px]  w-[218px] lg:w-[160px] xl:w-[218px] -mt-2 py-[8px] rounded-[4px] bg-[#F0F0F0]">
+                                    <div className="pl-[20px]  w-full lg:w-[160px] xl:w-[218px] -mt-2 py-[8px] rounded-[4px] bg-[#F0F0F0]">
                                         <NavLink
                                             to={link.path2}
                                             className={({ isActive }) =>

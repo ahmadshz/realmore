@@ -3,9 +3,9 @@ import SideBar from '../../../Components/Dashboard/DashboardBank/SideBar'
 import { Outlet } from 'react-router-dom'
 import EndSection from '../../../Components/Dashboard/DashboardBank/EndSection'
 import logo from '../../../assets/LogoGreen/logoheader.png';
-import client from '../../../assets/IconDashboard/client.png';
+import client from '../../../assets/IconDashboard/building.svg';
 import notification from '../../../assets/IconDashboard/notification.png';
-import overview from '../../../assets/IconDashboard/overview.png';
+import overview from '../../../assets/IconDashboard/building.svg';
 
 const DashboardBank = () => {
     return (

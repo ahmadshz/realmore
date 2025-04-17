@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import polygon from '../../../assets/IconDashboard/Polygon.png';
+import polygon from '../../../assets/IconDashboard/Polygon.svg';
 import axios from 'axios';
 import { baseUrl } from '../../../Api/Api';
 import Cookies from 'universal-cookie';

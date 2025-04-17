@@ -2,7 +2,7 @@ import React from 'react'
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard';
 import HeaderSection from '../../../Components/Auth/HeaderSection';
 import MetricCard from '../../../Components/Dashboard/DashboardBank/MetricCard';
-import add from '../../../assets/IconDashboard/added.png'
+import add from '../../../assets/IconDashboard/added.svg'
 import Progress from '../../../Components/Dashboard/DashboardBank/Progress';
 import CustomBarChar from '../../../Components/Dashboard/DashboardBank/CustomBarChar';
 
@@ -17,7 +17,7 @@ const Overview = () => {
             <HeaderDashboard />
             <div className='min-h-screen w-f flex flex-col xl:w-[850px] 2xl:w-[1217px]
                     pt-[55px] lg:pt-[97px] px-[18px] md:px-[40px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px]'>
-                <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle}  />
+                <HeaderSection titleSeconde={titleSeconde} firstTitle={firstTitle} />
 
                 {/* Section 1 */}
                 <div className='mt-[40px] flex flex-wrap gap-y-[30px] justify-between '>
@@ -98,7 +98,7 @@ const Overview = () => {
                 </div>
             </div>
 
-        </div >
+        </div>
     )
 }
 

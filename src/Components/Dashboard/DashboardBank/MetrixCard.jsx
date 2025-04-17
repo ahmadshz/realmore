@@ -1,6 +1,6 @@
 import React from 'react';
-import added from '../../../assets/IconDashboard/added.png';
-import arrow from '../../../assets/IconDashboard/arrow-2.png';
+import added from '../../../assets/IconDashboard/added.svg';
+import arrow from '../../../assets/IconDashboard/arrow-2.svg';
 import CustomBarChar from './CustomBarChar';
 import MetricCard from './MetricCard'; import Progress from './Progress';
 ;

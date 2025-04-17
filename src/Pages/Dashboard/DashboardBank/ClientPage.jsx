@@ -3,7 +3,7 @@ import HeaderSection from '../../../Components/Auth/HeaderSection';
 import HeaderDashboard from '../../../Components/Dashboard/DashboardBank/HeaderDashboard';
 import addClient from '../../../assets/IconDashboard/addClient.svg';
 import notification from '../../../assets/IconDashboard/notification.png';
-import logo from '../../../assets/IconDashboard/logoMobile.png';
+import logo from '../../../assets/IconDashboard/Logo.svg';
 import { Link } from 'react-router-dom';
 import ClientsSummaryCard from '../../../Components/Dashboard/DashboardBank/ClientsSummaryCard';
 import ScrollBarList from '../../../Components/Dashboard/DashboardBank/ScrollBarList';
